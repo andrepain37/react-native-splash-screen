@@ -19,10 +19,12 @@ public class SplashScreen {
     private static Dialog mSplashDialog;
     private static WeakReference<Activity> mActivity;
 
+
+
     /**
      * 打开启动屏
      */
-    public static void show(final Activity activity, final int themeResId, final boolean fullScreen) {
+    public static void show(final Activity activity, final int themeResId, final boolean fullScreen, final int customLaunchScreen) {
         if (activity == null) return;
         mActivity = new WeakReference<Activity>(activity);
         activity.runOnUiThread(new Runnable() {
@@ -43,13 +45,18 @@ public class SplashScreen {
         });
     }
 
+    public static void show(final Activity activity, final boolean fullScreen, final int customLaunchScreen) {
+        int resourceId = fullScreen ? R.style.SplashScreen_Fullscreen : R.style.SplashScreen_SplashTheme;
+        show(activity, resourceId, fullScreen, customLaunchScreen);
+    }
+
     /**
      * 打开启动屏
      */
     public static void show(final Activity activity, final boolean fullScreen) {
         int resourceId = fullScreen ? R.style.SplashScreen_Fullscreen : R.style.SplashScreen_SplashTheme;
 
-        show(activity, resourceId, fullScreen);
+        show(activity, resourceId, fullScreen, R.layout.launch_screen);
     }
 
     /**
