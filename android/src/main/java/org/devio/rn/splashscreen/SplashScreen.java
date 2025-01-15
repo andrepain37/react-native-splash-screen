@@ -32,7 +32,7 @@ public class SplashScreen {
             public void run() {
                 if (!activity.isFinishing()) {
                     mSplashDialog = new Dialog(activity, themeResId);
-                    mSplashDialog.setContentView(R.layout.launch_screen);
+                    mSplashDialog.setContentView(customLaunchScreen);
                     mSplashDialog.setCancelable(false);
                     if (fullScreen) {
                         setActivityAndroidP(mSplashDialog);
